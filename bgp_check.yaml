@@ -1,0 +1,17 @@
+---
+- name: "Capture BGP Table from IOS Devices"
+  hosts: routers
+  gather_facts: no
+  connection: local
+  
+  tasks:
+  
+  - name: "Gather BGP Information"
+    ios_command:
+     commands:
+      - show ip bgp sum
+      - show ip  bgp
+    register: SHOW_IP_BGP
+  - name: "show ip BGP"
+    debug:
+     msg: "{{SHOW_IP_BGP.stdout_lines}}"
