@@ -9,8 +9,8 @@
   - name: "Gather BGP Information"
     ios_command:
      commands:
-      - show ip bgp sum
-      - show ip  bgp
+      - show ip bgp sum | begin Neighbor
+      - show ip  bgp | begin Network
     register: SHOW_IP_BGP
   - name: "show ip BGP"
     debug:
