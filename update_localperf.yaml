@@ -1,0 +1,51 @@
+---
+
+- hosts: routers
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+  - name: Update BGP Local Prefernce on R5
+    block:
+
+      - name: "Update Local Pref on R5"
+        ios_config:
+          lines:
+          - neighbor 6.6.6.6 route-map LOCAL_PREF out
+          - neighbor 7.7.7.7 route-map LOCAL_PREF out
+          parents: router bgp 65045
+
+      - name: "Save configuration if changed"
+        ios_config:
+          save_when: modified
+
+
+      - name: "Reset BGP Neighbors on R5"
+        ios_command:
+         commands:
+          - clear ip bgp *
+
+
+
+    when: "'R5' in inventory_hostname"
+
+  - name: Wait for 3 minutes for BGP neighbors to form
+    pause:
+      minutes: 3
+
+
+  - name: Confirm Routing Table
+    block:
+
+      - name: Confirm routing
+        ios_command:
+         commands:
+          - show ip bgp
+          - show ip route
+
+        register: SHOW_IP_BGP
+
+      - name: "show ip bgp"
+        debug:
+         msg: "{{SHOW_IP_BGP.stdout_lines}}"
