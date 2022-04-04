@@ -4,6 +4,8 @@ R2 = ansible_host=192.168.1.82
 R3 = ansible_host=192.168.1.83
 R4 = ansible_host=192.168.1.84
 R5 = ansible_host=192.168.1.85
+R6 = ansible_host=192.168.1.86
+R7 = ansible_host=192.168.1.87
 
 [routers:vars]
 ansible_connection = network_cli
