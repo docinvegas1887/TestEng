@@ -42,7 +42,7 @@
         ios_command:
          commands:
           - show ip bgp
-          - show ip route
+          
 
         register: SHOW_IP_BGP
 
