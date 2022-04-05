@@ -10,3 +10,4 @@ R7 = ansible_host=192.168.1.87
 [routers:vars]
 ansible_connection = network_cli
 ansible_network_os = ios
+stdout_callback = yaml
