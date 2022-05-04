@@ -1,0 +1,21 @@
+---
+
+- hosts: ios_switches
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+  - name: "set command no spanning-tree etherchannel guard misconfig"
+    block:
+
+
+      - name: "no spanning-tree etherchannel guard misconfig"
+        ios_config:
+          lines:
+          - no spanning-tree etherchannel guard misconfig
+
+
+      - name: "save configuration if changed"
+        ios_config:
+          save_when: modified
