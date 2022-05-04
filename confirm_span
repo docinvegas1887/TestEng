@@ -1,0 +1,30 @@
+---
+
+- hosts: ios_switches
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+  - name: "confirm spanning_tree"
+    block:
+
+      - name: "show spanning-tree summary"
+        ios_command:
+         commands:
+          - show spanning-tree summary  | i misconfig
+        register: show_span
+
+      - name: "print show spanning-tree summary"
+        debug:
+         msg: "{{show_span.stdout_lines}}"
+
+      - name: "show mac address-table dynamic"
+        ios_command:
+         commands:
+          - show  mac address-table dynamic
+        register: show_mac
+
+      - name: "print show mac address-table dynamic"
+        debug:
+         msg: "{{show_mac.stdout_lines}}"
