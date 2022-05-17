@@ -22,6 +22,7 @@
       - name: "show mac address-table dynamic"
         ios_command:
          commands:
+          - show spanning-tree root
           - show  mac address-table dynamic
         register: show_mac
 
