@@ -1,0 +1,15 @@
+---
+- hosts: R1R2
+  gather_facts: no
+           
+
+  tasks:
+  
+  - name: get the current ntp server configs
+    ios_command:
+      commands:
+        - "show clock"
+        - "show ntp status" 
+    register: get_config
+
+  - debug: var=get_config.stdout_lines
