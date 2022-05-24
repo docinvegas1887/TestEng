@@ -35,4 +35,9 @@
     ios_config:
       lines:
         - "no {{ item }}"
+        
+  - name: update calendar
+    ios_command:
+      commands:
+        - "ntp update-calendar
 
