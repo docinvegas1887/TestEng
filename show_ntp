@@ -13,6 +13,6 @@
     register: show_clock
 
   - name: show clock
-      debug:
-       msg: "{{show_clock.stdout_lines}}"
+    debug:
+     msg: "{{show_clock.stdout_lines}}"
   
