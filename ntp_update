@@ -39,5 +39,5 @@
   - name: update calendar
     ios_command:
       commands:
-        - "ntp update-calendar
+        - "ntp update-calendar"
 
