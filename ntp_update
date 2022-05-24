@@ -1,5 +1,5 @@
 ---
-- hosts: routers
+- hosts: R1R2
   gather_facts: no
 
 
