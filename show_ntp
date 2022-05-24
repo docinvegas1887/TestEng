@@ -10,6 +10,9 @@
       commands:
         - "show clock"
         - "show ntp status" 
-    register: get_config
+    register: show_clock
 
-  - debug: var=get_config.stdout_lines
+  - name: show clock
+      debug:
+       msg: "{{show_clock.stdout_lines}}"
+  
