@@ -14,5 +14,5 @@
 
   - name: show clock
     debug:
-     msg: "{{show_clock.stdout_lines}}"
+      msg: "{{show_clock.stdout_lines}}"
   
