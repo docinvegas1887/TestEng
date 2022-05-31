@@ -20,7 +20,7 @@
          msg: "{{show_span.stdout_lines}}"
 
       - name: "show mac address-table dynamic"
-        ios_command:
+        cisco.ios.ios_command:
          commands:
           - show spanning-tree root
           - show  mac address-table dynamic
@@ -31,7 +31,7 @@
          msg: "{{show_mac.stdout_lines}}"
          
       - name: "show cdp neighbor"
-        ios_command:
+        cisco.ios.ios_command:
          commands:
           - show cdp neighbor
         register: show_cdp_neighbor
@@ -41,7 +41,7 @@
          msg: "{{show_cdp_neighbor.stdout_lines}}"
          
       - name: "show etherechannel summary"
-        ios_command:
+        cisco.ios.ios_command:
          commands:
           - show etherchannel summary
         register: show_etherchannel_summary
