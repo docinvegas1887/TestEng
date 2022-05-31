@@ -1,0 +1,19 @@
+---
+- hosts: NXOS
+  gather_facts: no
+  
+
+
+  tasks:
+    - name: "show ip ospf interface" 
+      cisco.nxos.nxos_command:
+        commands: 
+        - show ip ospf neighbors 
+        - show ip ospf interface brief 
+        - show ip ospf database 
+        - show ip route       
+      register: nxos_ospf
+   
+    - name: "print ospf database"
+      debug:
+       msg: "{{nxos_ospf.stdout_lines}}
