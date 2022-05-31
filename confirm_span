@@ -46,7 +46,7 @@
           - show etherchannel summary
         register: show_etherchannel_summary
         
-      - name: "print etherchannel summary
+      - name: "print etherchannel summary"
         debug:
          msg: "{{show_etherchannel_summary.stdout_lines}}"
          
