@@ -32,7 +32,7 @@
          
       - name: "show cdp neighbor"
         ios_command:
-         comamnds:
+         commands:
           - show cdp neighbor
         register: show_cdp_neighbor
         
