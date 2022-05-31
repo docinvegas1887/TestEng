@@ -29,3 +29,15 @@
       - name: "print show mac address-table dynamic"
         debug:
          msg: "{{show_mac.stdout_lines}}"
+         
+      - name: "show cdp neighbor"
+        ios_command:
+         comamnds:
+          - show cdp neighbor
+        register: show_cdp_neighbor
+        
+      - name: "print show cdp neighbor"
+        debug:
+         msg: "{{show_cdp_neighbor.stdout_lines}}"
+         
+   
