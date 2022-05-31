@@ -10,7 +10,7 @@
     block:
 
       - name: "show spanning-tree summary"
-        ios_command:
+        cisco.ios.ios_command:
          commands:
           - show spanning-tree summary  | i misconfig
         register: show_span
