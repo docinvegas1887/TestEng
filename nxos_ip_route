@@ -17,4 +17,4 @@
    
     - name: "print ospf database"
       debug:
-       msg: "{{nxos_ospf.stdout_lines}}
+       msg: "{{nxos_ospf.stdout_lines}}"
