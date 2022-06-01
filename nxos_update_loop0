@@ -1,0 +1,45 @@
+---
+- hosts: NXOS
+  gather_facts: no
+  
+
+
+  tasks:
+
+    - name: "fix duplicate router-id"
+      block: 
+
+        - name: "update router-id"
+          cisco.nxos.nxos_config:
+            lines:
+              - router-id  10.0.0.159
+            parents: router ospf 1              
+
+
+    
+        - name: "update loopback 0 ip"
+          cisco.nxos.nxos_config:
+            lines:
+              - ip address 10.0.0.159/32
+            parents: interface loopback 0
+   
+                    
+
+        - name: "reset ospf neighbor"
+          cisco.nxos.nxos_command:
+            commands:
+            - clear ip ospf neighbor *
+          register: clear_ospf_nei
+    
+        - name: "print clear ip ospf nei"
+          debug:
+           msg: "{{clear_ospf_nei.stdout_lines}}"
+
+    
+        - name: "save running config"
+          cisco.nxos.nxos_command:
+            commands:
+            - copy run start    
+
+
+      when: "'RRICMCPDIS2-CAMPUS' in inventory_hostname"
