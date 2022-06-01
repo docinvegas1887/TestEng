@@ -13,7 +13,7 @@
           cisco.nxos.nxos_config:
             lines:
               - router-id  10.0.0.159
-            parents: router ospf 1              
+            parents: router ospf 10              
 
 
     
