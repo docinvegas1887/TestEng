@@ -8,6 +8,7 @@
     - name: "show ip ospf interface" 
       cisco.nxos.nxos_command:
         commands: 
+        - show ip ospf | i Process
         - show ip ospf neighbors 
         - show ip ospf interface brief 
         - show ip ospf database 
