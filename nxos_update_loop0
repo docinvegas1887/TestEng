@@ -42,4 +42,4 @@
             - copy run start    
 
 
-      when: "'RRICMCPDIS2-CAMPUS' in inventory_hostname"
+      when: "'TEST' in inventory_hostname"
